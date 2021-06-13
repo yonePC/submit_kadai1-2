@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
+ 
+ strong {
+    font-weight: bold;
+}
 
 body {
     background-color: #fff;
@@ -28,6 +32,10 @@ p, ol, ul, td {
     font-size: 13px;
     line-height: 18px;
     margin: 33px;
+}
+
+a {
+    color: #000;
 }
 
 label {
