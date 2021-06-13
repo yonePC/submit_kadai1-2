@@ -14,8 +14,6 @@
  *= require_self
  */
 
-
-/*やること14更新*/
 body {
     background-color: #fff;
     color: #333;
@@ -34,4 +32,12 @@ p, ol, ul, td {
 
 label {
     display: block;
+}
+
+#notice {
+    color: green;
+}
+
+div.field, div.actions {
+    margin-bottom: 10px;
 }
