@@ -1,3 +1,9 @@
+<p id="notice">
+  <% if flash[:notice] %>
+  <%= flash[:notice] %>
+  <% end %>
+</p>
+
 <h1>Books</h1>
 <table>
   <thead>
@@ -26,21 +32,58 @@
 
 
 <h2>New book</h2>
-<form class="new_book" id="new_book" action="/books" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="8RP7BF2ytnagwGQ1o/G3+LB8KQGvhZ/dlMMv9qhWFmtut0mCiA9w4DJqVLMFuD8IZgOlPWTM4ILI3ZUtQzw7HA==">
 
-  <div class="field">
-    <label for="book_title">Title</label>
-    <input class="book_title" type="text" name="book[title]" id="book_title">
+
+<form class="new_book" id="new_book" action="/books" accept-charset="UTF-8" method="post">
+ <input name="utf8" type="hidden" value="✓">
+ <input type="hidden" name="authenticity_token" value="8RP7BF2ytnagwGQ1o/G3+LB8KQGvhZ/dlMMv9qhWFmtut0mCiA9w4DJqVLMFuD8IZgOlPWTM4ILI3ZUtQzw7HA==">
+
+
+  <% if @book.errors.any? %>
+  <div id = "error_explanation">
+   <h2>
+      <%= @book.errors.count %>errors prohibited this book from being saved:
+   <% end %>
+   </h2>
+
+   <ul>
+     <li>
+       <% @book.errors.full_messages.each do |message| %>
+        <%= message %>
+       <% end %>
+     </li>
+   </ul>
   </div>
 
+
+
   <div class="field">
-    <label for="book_body">Body</label>
-    <textarea class="book_body" name="book[body]" id="book_body"></textarea>
+    <div class="field_with_errors">
+      <label for="book_title">Title</label>
+    </div>
+    <div class="field_with_errors">
+      <input class="book_title" type="text" name="book[title]" id="book_title">
+    </div>
   </div>
+
+
+
+  <div class="field">
+    <div class="field_with_errors">
+      <label for="book_body">Body</label>
+    </div>
+    <div class="field_with_errors">
+      <textarea class="book_body" name="book[body]" id="book_body"></textarea>
+    </div>
+  </div>
+
+
 
   <div class="actions">
     <input type="submit" name="commit" value="Create Book" data-disable-with="Create Book">
   </div>
+
+
 </form>
 
 
